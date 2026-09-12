@@ -30,6 +30,37 @@ The first scan creates `.security/` in the repo and switches the guardrail on
 there. That is deliberate: the plugin is enabled everywhere, but it only acts
 in repositories you have scanned, and never writes into one you have not.
 
+## Use cases
+
+**Catch vulnerabilities as Claude writes them.** You ask for a feature and
+Claude writes `subprocess.run("ls " + name, shell=True)`. The guardrail replies
+at once — *"[Critical] CODE-W1-L3-017: pass the command as a list and never set
+`shell=True`"* — and Claude fixes it before it moves on.
+
+**Check before you open a PR.** `/gadriel:scan` for a verdict and the findings
+that matter, then `/gadriel:fix CODE-W1-L3-017`: Claude applies the fix and
+re-scans to prove the finding is gone.
+
+**Secure AI applications.** *"Review this agent for prompt injection and
+hardcoded LLM keys."* The OWASP LLM Top 10 and AI-secrets skills load on their
+own, and Gadriel's MCP configuration rules flag unpinned `npx` servers,
+plaintext tokens and plain-HTTP remote servers.
+
+**Vet third-party skills and MCP servers before you trust them.** *"Scan this
+skill I downloaded."* Gadriel flags skill instructions that override the user
+or direct destructive or exfiltrating actions, such as a skill that tells
+Claude to send out your SSH key. Hooks are not analyzed yet, so review any
+hook commands a third-party plugin ships yourself.
+
+**Produce compliance evidence.** `/gadriel:reports` renders PDFs for the OWASP
+LLM Top 10, SOC 2, HIPAA, the EU AI Act, NIST AI RMF and cyber-insurance
+readiness from the latest scan.
+
+**Get a specialist review.** *"Have the security reviewer go over the auth
+module."* Claude delegates to `gadriel:gadriel-security-reviewer`, which
+confirms or dismisses each finding, explains it and proposes a fix in your
+codebase's own style.
+
 ## What you get
 
 **The guardrail.** After every `Write`/`Edit`, Gadriel re-scans the file. A
