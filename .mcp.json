@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "gadriel": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/gadriel",
+      "args": ["code", "mcp"]
+    }
+  }
+}

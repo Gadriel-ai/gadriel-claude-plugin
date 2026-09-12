@@ -1,0 +1,55 @@
+{
+  "description": "Gadriel guardrail and session state. Active only in projects with a .security/ directory (created by the first /gadriel:scan).",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [{ "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/gadriel-hook.sh\" pre-bash", "timeout": 10 }]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [{ "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/gadriel-hook.sh\" post-edit", "timeout": 60 }]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [{ "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/gadriel-hook.sh\" route", "timeout": 10 }]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/gadriel-hook.sh\" session-restore", "timeout": 15 },
+          { "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/gadriel-hook.sh\" snapshot-load", "timeout": 10 }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [{ "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/gadriel-hook.sh\" session-end", "timeout": 10 }]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [{ "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/gadriel-hook.sh\" sync", "timeout": 10 }]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "manual",
+        "hooks": [{ "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/gadriel-hook.sh\" compact-manual", "timeout": 10 }]
+      },
+      {
+        "matcher": "auto",
+        "hooks": [{ "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/gadriel-hook.sh\" compact-auto", "timeout": 10 }]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [{ "type": "command", "command": "sh \"${CLAUDE_PLUGIN_ROOT}/scripts/gadriel-hook.sh\" post-task", "timeout": 10 }]
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "gadriel",
+  "displayName": "Gadriel AI Security Harness",
+  "version": "1.4.0",
+  "description": "AI Security Harness for Claude Code. Gadriel scans the code Claude writes as it writes it and feeds findings back so they are fixed before the turn moves on, and gives Claude security tools, skills and reviewer agents. SAST, secrets, dependencies, containers and config, including AI-specific risks (OWASP LLM Top 10).",
+  "author": {
+    "name": "Gadriel",
+    "url": "https://gadriel.ai"
+  },
+  "homepage": "https://gadriel.ai",
+  "repository": "https://github.com/Gadriel-ai/gadriel-claude-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "ai-security",
+    "security-harness",
+    "guardrail",
+    "sast",
+    "secrets",
+    "sca",
+    "sbom",
+    "owasp",
+    "owasp-llm-top10",
+    "compliance",
+    "mcp"
+  ]
+}
