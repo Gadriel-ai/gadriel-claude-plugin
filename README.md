@@ -103,7 +103,7 @@ in `bin/gadriel` uses, in order:
 
 1. `$GADRIEL_BIN`, if you set it;
 2. a `gadriel` already on your `PATH` (for example `npm install -g gadriel`);
-3. otherwise the pinned release (currently **1.4.0**), downloaded once from
+3. otherwise the pinned release (currently **1.5.0**), downloaded once from
    `registry.npmjs.org` and cached in `~/.cache/gadriel-claude-plugin`.
 
 A downloaded package is checked against the SHA-512 pinned in the launcher —
