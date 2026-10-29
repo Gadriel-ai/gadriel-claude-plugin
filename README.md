@@ -1,5 +1,8 @@
 # Gadriel — AI Security Harness for Claude Code
 
+**[Product Overview](https://gadriel.ai/code-security)** · **[Documentation](https://gadriel.ai/docs)** · **[MCP Tools Reference](https://gadriel.ai/docs/gca/mcp-tools-reference.html)** · **[SAST Benchmarks](https://gadriel.ai/blog/gadriel-vs-semgrep.html)**
+
+
 Claude writes code fast. Gadriel makes sure what it writes is safe.
 
 This plugin puts [Gadriel](https://gadriel.ai) around Claude Code as a
